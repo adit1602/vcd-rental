@@ -1,0 +1,60 @@
+LOGIN RPL
+
+
+<!-------Login Start------->
+<section class="login section-padding" data-scroll-index='7'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="sectioner-header text-center">
+            <h3>Login</h3>
+            <span class="line"></span>
+            <p>Enter your credentials to log in.</p>
+          </div>
+          <div class="section-content">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <form id="login_form" action="login.php" method="post">
+                  <input type="text" id="username" class="form-input w-100" name="username" placeholder="Username" required>
+                  <input type="password" id="password" class="form-input w-100" name="password" placeholder="Password" required>
+                  <button class="btn-grad w-100 text-uppercase" type="submit" name="login_button">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-------Login End-------> 
+
+
+
+<nav class="navbar navbar-expand-lg">
+    <!-- ... (tanpa perubahan) ... -->
+    <ul class="navbar-nav ml-auto">
+      <!-- ... (tautan lainnya) ... -->
+      <li class="nav-item"> <a class="nav-link" href="login.php">Login</a> </li>
+    </ul>
+  </nav>
+
+
+<?php
+// login.php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
+    // Ambil nilai dari formulir
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Proses autentikasi (gantilah dengan logika autentikasi yang sesuai)
+    if ($username == "admin" && $password == "admin123") {
+        // Autentikasi berhasil, arahkan ke halaman utama
+        header("location: index.html");
+        exit();
+    } else {
+        // Autentikasi gagal, tampilkan pesan error
+        echo "<script>alert('Login failed. Please check your username and password.')</script>";
+    }
+}
+?>
